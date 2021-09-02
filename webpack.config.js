@@ -49,7 +49,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new DotEnvWebPackPlugin(),
+    new DotEnvWebPackPlugin({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      defaults: false,
+    }),
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
