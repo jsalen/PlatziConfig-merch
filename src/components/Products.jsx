@@ -7,23 +7,12 @@ import '../styles/components/Products.css';
 
 const Products = () => {
   const {
-    state: { products, cart },
+    state: { products },
     addToCart,
   } = useContext(AppContext);
 
-  const handleAddToCart = (product) => {
-    let newCart = [...cart];
-    let itemInCart = newCart.find((item) => product.id === item.id);
-    if (itemInCart) {
-      itemInCart.qtyInCart++;
-    } else {
-      itemInCart = {
-        ...product,
-        qtyInCart: 1,
-      };
-      newCart.push(itemInCart);
-    }
-    addToCart(newCart);
+  const handleAddToCart = (product) => () => {
+    addToCart(product);
   };
 
   return (
